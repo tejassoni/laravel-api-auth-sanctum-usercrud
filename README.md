@@ -12,4 +12,6 @@ https://laravel.com/docs/10.x/sanctum
 # Search Key
 <ol>
   <li>KEY : SANCTUM</li>
+  <li>KEY : APIVALIDATIONRESPONSE</li>
+  <li>KEY : DEFAULTPASSWORD</li>  
 </ol>

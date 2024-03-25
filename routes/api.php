@@ -15,11 +15,16 @@ use App\Http\Controllers\Api\Auth\AuthController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
+// without authorization accessible urls
 Route::post('register',[AuthController::class,'register']);
 Route::post('login',[AuthController::class,'login']);
-Route::post('logout',[AuthController::class,'logout'])
+
+// SANCTUM Routes Starts
+Route::group(['middleware' => ['auth:sanctum']], function() {
+  Route::get('/user', function (Request $request) {
+      return $request->user();
+  });
+  Route::post('logout',[AuthController::class,'logout'])
   ->middleware('auth:sanctum');
+});
+// SANCTUM Routes Ends

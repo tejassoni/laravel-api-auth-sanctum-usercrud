@@ -62,6 +62,7 @@ return [
     */
 
     'token_prefix' => env('SANCTUM_TOKEN_PREFIX', ''),
+    'token_sanctum' => env('SANCTUM_TOKEN', 'Personal Access Token'),
 
     /*
     |--------------------------------------------------------------------------
