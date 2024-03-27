@@ -1,6 +1,5 @@
 # laravel-api-auth-sanctum-usercrud
-https://laravel.com/docs/10.x/sanctum
-
+Laravel Sanctum Integration with Authorization and Basic User CRUD Api and Filters
 
 # References
 <ol>
@@ -14,4 +13,5 @@ https://laravel.com/docs/10.x/sanctum
   <li>KEY : SANCTUM</li>
   <li>KEY : APIVALIDATIONRESPONSE</li>
   <li>KEY : DEFAULTPASSWORD</li>  
+  <li>KEY : USERFILTER</li>  
 </ol>
