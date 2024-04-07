@@ -80,6 +80,9 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'mobile', 'password');
         if (auth()->attempt($credentials)) {
             $user = $request->user();
+            if($user->tokens()->where('tokenable_id', $user->id)->exists()) { // delete token if already login exists
+        		$user->tokens()->delete();
+   		    }
             $token = $user->createToken(config('sanctum.token_sanctum'))->plainTextToken;
 
             return response()->json([
@@ -91,7 +94,7 @@ class AuthController extends Controller
             ]);
         }
 
-        return response()->json(['status' => true, 'message' => 'Unauthorized, Credentials are not valid...!', 'data' => []], 401);
+        return response()->json(['status' => false, 'message' => 'Unauthorized, Credentials are not valid...!', 'data' => []], 401);
     }
 
     /**
