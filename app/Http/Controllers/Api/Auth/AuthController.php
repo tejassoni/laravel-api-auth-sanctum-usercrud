@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\Auth;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\Api\LoginRequest;
@@ -61,9 +62,11 @@ class AuthController extends Controller
             throw new \Exception('fails not created...!', 403);
 
         } catch (\Illuminate\Database\QueryException $ex) { // Handle query exception
-            return response()->json(['status' => false, 'data' => [], 'message' => "Error Query inserting data : " . $ex->getMessage()], 400);
+            Log::error('Error occurred during user registration database query: ' . $ex->getMessage());
+            return response()->json(['status' => false, 'data' => [], 'message' => "Something went wrong...! Error storing data...!"], 400);
         } catch (\Exception $ex) { // general exception
-            return response()->json(['status' => false, 'data' => [], 'message' => $ex->getMessage()], 404);
+            Log::error('Error occurred during user registration: ' . $ex->getMessage());
+            return response()->json(['status' => false, 'data' => [], 'message' => "Something went wrong...!"], 404);
         }
     }
 
@@ -167,9 +170,12 @@ class AuthController extends Controller
             throw new \Exception('Email Address and Mobile number not found in our database...!', 403);
 
         } catch (\Illuminate\Database\QueryException $ex) { // Handle query exception
-            return response()->json(['status' => false, 'message' => "Error Query inserting data : " . $ex->getMessage(),'data' => []], 400);
+            // Example logging within catch blocks
+            Log::error('Error occurred during user forgot password database query: ' . $ex->getMessage());
+            return response()->json(['status' => false, 'message' => "Something went wrong..! Error store data...!",'data' => []], 400);
         } catch (\Exception $ex) { // general exception
-            return response()->json(['status' => false, 'message' => $ex->getMessage(),'data' => []], 404);
+            Log::error('Error occurred during user forgot password: ' . $ex->getMessage());
+            return response()->json(['status' => false, 'message' => "Something went wrong...!",'data' => []], 404);
         }
     }
 }

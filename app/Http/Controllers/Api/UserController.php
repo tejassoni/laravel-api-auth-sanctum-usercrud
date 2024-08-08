@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\Api\UserStoreRequest;
@@ -40,7 +41,8 @@ class UserController extends Controller
                 'data' => $user
             ]);
         } catch (\Exception $ex) {
-            return response()->json(['status' => false, 'data' => [], 'message' => $ex->getMessage()], 404);
+            Log::error('Error occurred during user store: ' . $ex->getMessage());
+            return response()->json(['status' => false, 'data' => [], 'message' => "Something went wront...! User not stored...!"], 404);
         }
     }
 
@@ -59,7 +61,8 @@ class UserController extends Controller
             }
             throw new \Exception('User details not found...!', 403);
         } catch (\Exception $ex) {
-            return response()->json(['status' => false, 'data' => [], 'message' => $ex->getMessage()], 404);
+            Log::error('Error occurred during user show: ' . $ex->getMessage());
+            return response()->json(['status' => false, 'data' => [], 'message' => 'Something went wrong...! User details not found...!'], 404);
         }
     }
 
@@ -77,6 +80,7 @@ class UserController extends Controller
                 'message' => 'User Updated Successfully...!',
             ], 201);
         } catch (\Exception $ex) {
+            Log::error('Error occurred during user update: ' . $ex->getMessage());
             return response()->json(['status' => false, 'data' => [], 'message' => $ex->getMessage()], 404);
         }
     }
@@ -97,7 +101,8 @@ class UserController extends Controller
             }
             throw new \Exception('User details not found for delete...!', 403);
         } catch (\Exception $ex) {
-            return response()->json(['status' => false, 'data' => [], 'message' => $ex->getMessage()], 404);
+            Log::error('Error occurred during user delete: ' . $ex->getMessage());
+            return response()->json(['status' => false, 'data' => [], 'message' => "Something went wrong...! User details not found for delete...!"], 404);
         }
     }
 
@@ -129,7 +134,8 @@ class UserController extends Controller
             }
             throw new \Exception('No Filter User details founds...!', 403);
         } catch (\Exception $ex) {
-            return response()->json(['status' => false, 'data' => [], 'message' => $ex->getMessage()], 404);
+            Log::error('Error occurred during user filter: ' . $ex->getMessage());
+            return response()->json(['status' => false, 'data' => [], 'message' => 'Something went wrong...! No Filter User details founds...!'], 404);
         }
     }
 }
