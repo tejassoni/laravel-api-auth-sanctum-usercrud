@@ -20,11 +20,12 @@ class UserController extends Controller
         try {
             return response()->json([
                 'status' => true,
-                'message' => 'Successfully logged out',
+                'message' => 'Users list get Successfully...!',
                 'data' => User::latest()->paginate($request->input('per_page', 5))
             ]);
         } catch (\Exception $ex) {
-            return response()->json(['status' => false, 'data' => [], 'message' => $ex->getMessage()], 404);
+            Log::error('Error occurred during user listing: ' . $ex->getMessage());
+            return response()->json(['status' => false, 'data' => [], 'message' => 'Users list not found...!'], 404);
         }
     }
 
@@ -49,7 +50,7 @@ class UserController extends Controller
     /*
      * User detail view by ID api
      */
-    public function showUser(Request $request, $id)
+    public function showUser($id)
     {
         try {
             if ($user = User::findOrFail($id)) {
