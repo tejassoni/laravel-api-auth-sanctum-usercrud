@@ -1,6 +1,40 @@
 # laravel-api-auth-sanctum-usercrud
 Laravel Sanctum Integration with Authorization and Basic User CRUD Api and Filters
 
+# Authorization
+<ol>
+<li><b>User Registration</b></li>
+<li>firstname</li>
+<li>lastname</li>
+<li>email</li>
+<li>mobile</li>
+<li>gender</li>
+<li>address</li>
+<li>city</li>
+<li>state</li>
+<li>country</li>
+<li>pincode</li>
+<li>birthdate</li>
+<li>password</li>
+<li>confirm password</li>
+</ol>
+
+<ol>
+<li><b>User Login</b></li>
+<li>email</li>
+<li>mobile</li>
+<li>password</li>
+</ol>
+
+<ol>
+<li><b>User Forgot Password</b></li>
+<li>email</li>
+<li>mobile</li>
+<li>old password</li>
+<li>new password</li>
+<li>confirm password</li>
+</ol>
+
 # References
 <ol>
  <li>https://laravel.com/docs/10.x/sanctum#installation</li> 
