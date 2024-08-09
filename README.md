@@ -4,6 +4,7 @@ Laravel Sanctum Integration with Authorization and Basic User CRUD Api and Filte
 # Authorization
 <ol>
 <li><b>User Registration</b></li>
+<ul>
 <li>firstname</li>
 <li>lastname</li>
 <li>email</li>
@@ -17,22 +18,27 @@ Laravel Sanctum Integration with Authorization and Basic User CRUD Api and Filte
 <li>birthdate</li>
 <li>password</li>
 <li>confirm password</li>
+</ul>
 </ol>
 
 <ol>
 <li><b>User Login</b></li>
+<ul>
 <li>email</li>
 <li>mobile</li>
 <li>password</li>
+</ul>
 </ol>
 
 <ol>
 <li><b>User Forgot Password</b></li>
+<ul>
 <li>email</li>
 <li>mobile</li>
 <li>old password</li>
 <li>new password</li>
 <li>confirm password</li>
+</ul>
 </ol>
 
 # References
