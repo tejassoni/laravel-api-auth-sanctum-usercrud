@@ -35,6 +35,16 @@ Laravel Sanctum Integration with Authorization and Basic User CRUD Api and Filte
 </ul>
 </ol>
 
+# User Api's
+<ol>
+<li><b>User List</b></li>
+<li><b>User Show</b></li>
+<li><b>User Filter</b></li>
+<li><b>User Store</b></li>
+<li><b>User Update</b></li>
+<li><b>User Delete</b></li>
+</ol>
+
 # References
 <ol>
  <li>https://laravel.com/docs/10.x/sanctum#installation</li> 
